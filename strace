@@ -1,0 +1,1 @@
+v_v=""; while [ "$v_v" = "" ]; do v_v=$(ss -pno state established '( sport = :http or sport = :https )' dst 24.27.40.236 | tail -n +2 | awk '{print $6}' | cut -d',' -f2); done; strace -p "$v_v" -fft -s 1024 -o strace.pid
